@@ -9,8 +9,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
-
-TF_GRAPH = r.content
 MAX_K = 10
 
 TF_GRAPH = "{base_path}\inception_model\graph.pb".format(
