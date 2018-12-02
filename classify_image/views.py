@@ -8,22 +8,12 @@ from django.core.files.temp import NamedTemporaryFile
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
-import requests
-
-url="https://github.com/elvisvelasque/servidor_prueba/raw/master/classify_image/inception_model/graph.pb"
-filename ="{base_path}/inception_model/graph2.pb".format(
-    base_path=os.path.abspath(os.path.dirname(__file__)))
-
-r = requests.get(url)
-f = open(filename,'wb')
-f.write(r.content)
-f.close()
 
 
 TF_GRAPH = r.content
 MAX_K = 10
 
-TF_GRAPH = "{base_path}/inception_model/graph2.pb".format(
+TF_GRAPH = r"{base_path}\inception_model\graph.pb".format(
     base_path=os.path.abspath(os.path.dirname(__file__)))
 TF_LABELS = "{base_path}/inception_model/labels.txt".format(
     base_path=os.path.abspath(os.path.dirname(__file__)))
