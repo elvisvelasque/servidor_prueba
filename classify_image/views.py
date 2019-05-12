@@ -19,7 +19,7 @@ TF_LABELS = "{base_path}/inception_model/labels.txt".format(
 
 def load_graph():
     sess = tf.Session()
-    with tf.gfile.FastGFile(TF_GRAPH, 'rb') as tf_graph:
+    with tf.gfile.GFile(TF_GRAPH, 'rb') as tf_graph:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(tf_graph.read())
         tf.import_graph_def(graph_def, name='')
