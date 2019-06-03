@@ -11,7 +11,7 @@ from django.shortcuts import render
 
 MAX_K = 10
 
-TF_GRAPH = r"{base_path}/inception_model/graph.pb".format(
+TF_GRAPH = "{base_path}/inception_model/graph.pb".format(
     base_path=os.path.abspath(os.path.dirname(__file__)))
 TF_LABELS = "{base_path}/inception_model/labels.txt".format(
     base_path=os.path.abspath(os.path.dirname(__file__)))
@@ -19,7 +19,7 @@ TF_LABELS = "{base_path}/inception_model/labels.txt".format(
 
 def load_graph():
     sess = tf.Session()
-    with tf.gfile.GFile(TF_GRAPH, 'rb') as tf_graph:
+    with tf.gfile.FastGFile(TF_GRAPH, 'rb') as tf_graph:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(tf_graph.read())
         tf.import_graph_def(graph_def, name='')
